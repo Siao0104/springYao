@@ -11,11 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class UserBasicDetailsImpl implements UserDetails {
+public class UserBasicDetails implements UserDetails {
 
     private final UserBasicEntity userBasicEntity;
 
-    public UserBasicDetailsImpl(UserBasicEntity user) {
+    public UserBasicDetails(UserBasicEntity user) {
         this.userBasicEntity = user;
     }
 
@@ -45,4 +45,6 @@ public class UserBasicDetailsImpl implements UserDetails {
     public Date getExpiryDate() { return userBasicEntity.getExpiryDate(); }
 
     public String getRealUserName() { return userBasicEntity.getUserName(); }
+
+    public String getToken() { return userBasicEntity.getToken(); }
 }

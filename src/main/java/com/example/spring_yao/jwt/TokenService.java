@@ -1,7 +1,9 @@
 package com.example.spring_yao.jwt;
 
+import com.example.spring_yao.entity.UserBasicEntity;
 import com.example.spring_yao.jwt.loginreponse.LoginResponse;
 import com.example.spring_yao.jwt.loginrequest.LoginRequest;
+import com.example.spring_yao.repository.UserBasicRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
@@ -30,6 +32,9 @@ public class TokenService {
     @Autowired
     private AuthenticationProvider authenticationProvider;
 
+    @Autowired
+    private UserBasicRepository userBasicRepository;
+
     @PostConstruct
     private void init() {
         try{
@@ -51,13 +56,16 @@ public class TokenService {
         authToken = authenticationProvider.authenticate(authToken);
 
         // 以自定義的 UserBasicDetailsServiceImpl 認證成功後取得結果
-        UserBasicDetailsImpl userDetails = (UserBasicDetailsImpl) authToken.getPrincipal();
+        UserBasicDetails userDetails = (UserBasicDetails) authToken.getPrincipal();
 
         //產生accessToken
         Map<String,Object> accessToken = createAccessToken(userDetails.getUsername());
 
         //產生refreshToken
         Map<String,Object> refreshToken = createRefreshToken(userDetails.getUsername());
+
+        //找出帳號資料，準備存入token
+        UserBasicEntity userBasicEntity = userBasicRepository.getByAccount(request.getAccount());
 
         LoginResponse res = new LoginResponse();
         res.setAccessToken(accessToken.get("accessToken").toString());
@@ -68,6 +76,9 @@ public class TokenService {
         res.setAccount(userDetails.getUsername());
         res.setUserAuthority(userDetails.getUserAuthority());
         res.setExpiryDate(userDetails.getExpiryDate());
+
+        userBasicEntity.setToken(res.getAccessToken());
+        userBasicRepository.save(userBasicEntity);
 
         return res;
     }

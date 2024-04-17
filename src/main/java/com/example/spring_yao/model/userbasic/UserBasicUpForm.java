@@ -2,7 +2,9 @@ package com.example.spring_yao.model.userbasic;
 
 import com.example.spring_yao.jwt.userauthority.UserAuthority;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
 
@@ -16,12 +18,18 @@ public class UserBasicUpForm {
     private Integer version;
 
     /** 姓名 */
+    @NotBlank(message = "姓名不能為空")
+    @Length(message = "名稱不能超過{max}個字",max = 10)
     private String userName;
 
     /** 帳號 */
+    @NotBlank(message = "帳號不能為空")
+    @Length(message = "帳號不能超過{max}個字",max = 20)
     private String account;
 
     /** 密碼 */
+    @NotBlank(message = "密碼不能為空")
+    @Length(message = "帳號不能超過{max}個字",max = 16)
     private String password;
 
     /** 生日 */
@@ -43,4 +51,7 @@ public class UserBasicUpForm {
 
     /** 使用者權限 */
     private UserAuthority authority;
+
+    /** token */
+    private String token;
 }

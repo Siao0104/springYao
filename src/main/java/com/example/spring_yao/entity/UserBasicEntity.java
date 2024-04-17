@@ -67,6 +67,10 @@ public class UserBasicEntity implements Serializable {
     @Column(name = "expiry_date")
     private Date expiryDate;
 
+    /** token */
+    @Column(name = "token")
+    private String token;
+
     @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
