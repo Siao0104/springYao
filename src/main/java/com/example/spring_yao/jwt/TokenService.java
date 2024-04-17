@@ -51,7 +51,7 @@ public class TokenService {
         authToken = authenticationProvider.authenticate(authToken);
 
         // 以自定義的 UserBasicDetailsServiceImpl 認證成功後取得結果
-        UserBasicDetailsServiceImpl userDetails = (UserBasicDetailsServiceImpl) authToken.getPrincipal();
+        UserBasicDetailsImpl userDetails = (UserBasicDetailsImpl) authToken.getPrincipal();
 
         //產生accessToken
         Map<String,Object> accessToken = createAccessToken(userDetails.getUsername());

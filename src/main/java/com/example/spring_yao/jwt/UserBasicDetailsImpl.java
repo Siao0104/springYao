@@ -11,11 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class UserBasicDetailsServiceImpl implements UserDetails {
+public class UserBasicDetailsImpl implements UserDetails {
 
     private final UserBasicEntity userBasicEntity;
 
-    public UserBasicDetailsServiceImpl(UserBasicEntity user) {
+    public UserBasicDetailsImpl(UserBasicEntity user) {
         this.userBasicEntity = user;
     }
 

@@ -23,6 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException(STR."查無此帳號: \{account}");
         }
 
-        return new UserBasicDetailsServiceImpl(userBasicEntity);
+        return new UserBasicDetailsImpl(userBasicEntity);
     }
 }
