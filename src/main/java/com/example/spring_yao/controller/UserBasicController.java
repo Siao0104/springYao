@@ -14,7 +14,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,16 +36,15 @@ public class UserBasicController {
     private TokenService tokenService;
 
     @Operation(summary = "取得全部註冊會員資料")
-    @GetMapping("/uiGetAllUser")
-    public ResponseEntity<List<UserBasicListVO>> uiGetAllUser() {
-        List<UserBasicEntity> userBasicEntities = userBasicRepository.findAll();
+    @GetMapping("/uiGetAllUser/{account}")
+    public ResponseEntity<List<UserBasicListVO>> uiGetAllUser(@PathVariable("account") String account) {
+        List<UserBasicEntity> userBasicEntities = userBasicRepository.getAllByAccount(account);
         List<UserBasicListVO> userBasicListVOS = JsonUtils.listTolist(userBasicEntities,UserBasicListVO.class);
         return ResponseEntity.ok(userBasicListVOS);
     }
 
     @Operation(summary = "註冊會員資料")
     @PostMapping("/uiRegisterUser")
-    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> uiRegisterUser(@RequestBody @Valid UserBasicCrForm userBasicCrForm) throws Exception{
         return loggingService.setNewUser(userBasicCrForm);
     }
@@ -66,4 +64,8 @@ public class UserBasicController {
         Map<String,String> res = Map.of("accessToken",accessToken.get("accessToken").toString());
         return ResponseEntity.ok(res);
     }
+
+    @Operation(summary = "驗證當前Token是否有效")
+    @GetMapping("/uiCheckToken")
+    public void uiCheckToken(){}
 }
