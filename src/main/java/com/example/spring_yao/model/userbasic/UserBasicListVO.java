@@ -1,13 +1,14 @@
 package com.example.spring_yao.model.userbasic;
 
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class UserBasicListVO {
+public class UserBasicListVO implements Serializable {
 
     /** 主鍵 */
     private int id;

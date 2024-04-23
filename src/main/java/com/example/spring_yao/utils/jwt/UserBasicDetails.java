@@ -1,7 +1,7 @@
-package com.example.spring_yao.jwt;
+package com.example.spring_yao.utils.jwt;
 
 import com.example.spring_yao.entity.UserBasicEntity;
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("spring_yao/codeMst")
+@RequestMapping("springYao/codeMst")
 @Slf4j
 @Tag(name = "代碼明細主檔")
 public class CodeMstController {

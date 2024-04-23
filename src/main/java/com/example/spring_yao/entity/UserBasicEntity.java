@@ -1,6 +1,6 @@
 package com.example.spring_yao.entity;
 
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;

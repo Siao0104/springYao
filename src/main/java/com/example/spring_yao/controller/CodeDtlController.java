@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("spring_yao/codeDtl")
+@RequestMapping("springYao/codeDtl")
 @Slf4j
 @Tag(name = "代碼明細檔")
 public class CodeDtlController {

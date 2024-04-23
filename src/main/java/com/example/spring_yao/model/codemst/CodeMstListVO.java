@@ -2,8 +2,10 @@ package com.example.spring_yao.model.codemst;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class CodeMstListVO {
+public class CodeMstListVO implements Serializable {
 
     /** 主鍵 */
     private int id;

@@ -1,6 +1,6 @@
 package com.example.spring_yao.model.userbasic;
 
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

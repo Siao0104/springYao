@@ -1,6 +1,6 @@
 package com.example.spring_yao.config;
 
-import com.example.spring_yao.jwt.JwtAuthenticationFilterService;
+import com.example.spring_yao.utils.jwt.JwtAuthenticationFilterService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -35,9 +35,9 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(registry ->
                         registry
-                                .requestMatchers("/spring_yao/userBasic/uiRegisterUser","/spring_yao/userBasic/uiUserLogging").permitAll()
-                                .requestMatchers("/spring_yao/codeMst/**").hasAnyAuthority("ADMIN")
-                                .requestMatchers("/spring_yao/codeDtl/**").permitAll()
+                                .requestMatchers("/springYao/userBasic/uiRegisterUser","/springYao/userBasic/uiUserLogging").permitAll()
+                                .requestMatchers("/springYao/codeMst/**").hasAnyAuthority("ADMIN")
+                                .requestMatchers("/springYao/codeDtl/**").permitAll()
                                 .requestMatchers("/swagger-ui/index.html/**").permitAll()
                                 .anyRequest().permitAll()
                 )

@@ -1,8 +1,8 @@
-package com.example.spring_yao.jwt.useridentity;
+package com.example.spring_yao.utils.jwt.useridentity;
 
 import com.example.spring_yao.entity.UserBasicEntity;
-import com.example.spring_yao.jwt.UserBasicDetails;
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.UserBasicDetails;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

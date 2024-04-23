@@ -1,4 +1,4 @@
-package com.example.spring_yao.jwt.loginrequest;
+package com.example.spring_yao.utils.jwt.loginrequest;
 
 import lombok.Data;
 

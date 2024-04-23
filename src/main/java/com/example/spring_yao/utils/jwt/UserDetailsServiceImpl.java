@@ -1,4 +1,4 @@
-package com.example.spring_yao.jwt;
+package com.example.spring_yao.utils.jwt;
 
 import com.example.spring_yao.entity.UserBasicEntity;
 import com.example.spring_yao.repository.UserBasicRepository;

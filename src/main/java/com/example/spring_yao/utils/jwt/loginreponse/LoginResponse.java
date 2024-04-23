@@ -1,6 +1,6 @@
-package com.example.spring_yao.jwt.loginreponse;
+package com.example.spring_yao.utils.jwt.loginreponse;
 
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 

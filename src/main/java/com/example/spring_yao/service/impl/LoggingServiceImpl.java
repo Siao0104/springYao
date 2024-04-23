@@ -1,12 +1,12 @@
 package com.example.spring_yao.service.impl;
 
 import com.example.spring_yao.entity.UserBasicEntity;
-import com.example.spring_yao.jwt.useridentity.UserIdentity;
+import com.example.spring_yao.utils.jwt.useridentity.UserIdentity;
 import com.example.spring_yao.model.userbasic.UserBasicCrForm;
 import com.example.spring_yao.repository.UserBasicRepository;
 import com.example.spring_yao.service.LoggingService;
 import com.example.spring_yao.utils.JsonUtils;
-import com.example.spring_yao.jwt.userauthority.UserAuthority;
+import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

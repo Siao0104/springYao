@@ -1,4 +1,4 @@
-package com.example.spring_yao.jwt.userauthority;
+package com.example.spring_yao.utils.jwt.userauthority;
 
 import org.springframework.security.core.GrantedAuthority;
 

@@ -1,9 +1,9 @@
 package com.example.spring_yao.controller;
 
 import com.example.spring_yao.entity.UserBasicEntity;
-import com.example.spring_yao.jwt.TokenService;
-import com.example.spring_yao.jwt.loginreponse.LoginResponse;
-import com.example.spring_yao.jwt.loginrequest.LoginRequest;
+import com.example.spring_yao.utils.jwt.TokenService;
+import com.example.spring_yao.utils.jwt.loginreponse.LoginResponse;
+import com.example.spring_yao.utils.jwt.loginrequest.LoginRequest;
 import com.example.spring_yao.model.userbasic.UserBasicCrForm;
 import com.example.spring_yao.model.userbasic.UserBasicListVO;
 import com.example.spring_yao.repository.UserBasicRepository;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("spring_yao/userBasic")
+@RequestMapping("springYao/userBasic")
 @Slf4j
 @Tag(name = "註冊會員主檔")
 public class UserBasicController {

@@ -2,8 +2,10 @@ package com.example.spring_yao.model.codedtl;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class CodeDtlListVO {
+public class CodeDtlListVO implements Serializable{
 
     /** 主鍵 */
     private int id;
@@ -19,7 +21,4 @@ public class CodeDtlListVO {
 
     /** 生效否 */
     private String enabled;
-
-    /** 外鍵 */
-    private String code_mst_id;
 }
