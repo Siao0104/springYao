@@ -39,4 +39,8 @@ public class MqSendServiceImpl implements MqSendService {
         rabbitTemplate.convertAndSend(RabbitmqConstant.YAO_01_C,userBasicListVOS);
     }
 
+    public void sendDirect(){
+        rabbitTemplate.convertAndSend("DirectMq","test Direct");
+    }
+
 }

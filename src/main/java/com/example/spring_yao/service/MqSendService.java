@@ -7,4 +7,6 @@ public interface MqSendService {
     void sendB();
 
     void sendC();
+
+    void sendDirect();
 }

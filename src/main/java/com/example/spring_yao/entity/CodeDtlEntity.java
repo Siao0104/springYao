@@ -27,7 +27,7 @@ public class CodeDtlEntity {
 
     /** 版本 */
     @Column(name = "version")
-    @org.springframework.data.annotation.Version
+    @Version
     private Integer version;
 
     /** 代碼 */
@@ -66,6 +66,6 @@ public class CodeDtlEntity {
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
 
-    @org.springframework.data.annotation.Transient
+    @Transient
     private transient String rowStatus = "R";
 }

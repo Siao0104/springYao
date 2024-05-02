@@ -29,4 +29,10 @@ public class MqReceiverServiceImpl {
     public void receiverC(List<UserBasicListVO> userBasicListVOS){
         System.out.println(STR."userBasicListVOS : \{userBasicListVOS}");
     }
+
+    @RabbitListener(queues = "DirectMq")
+    @RabbitHandler
+    public void receiverDirect(String direct){
+        System.out.println(STR."Direct : \{direct}");
+    }
 }

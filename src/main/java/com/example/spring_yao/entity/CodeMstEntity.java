@@ -3,6 +3,7 @@ package com.example.spring_yao.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -28,7 +29,7 @@ public class CodeMstEntity {
 
     /** 版本 */
     @Column(name = "version")
-    @org.springframework.data.annotation.Version
+    @Version
     private Integer version;
 
     /** 代碼 */
@@ -44,6 +45,7 @@ public class CodeMstEntity {
     private String enabled;
 
     @JsonManagedReference
+    @ToString.Exclude
     @OneToMany(mappedBy = "codeMstEntity",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<CodeDtlEntity> codeDtlEntities;
 
@@ -65,6 +67,6 @@ public class CodeMstEntity {
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
 
-    @org.springframework.data.annotation.Transient
+    @Transient
     private transient String rowStatus = "R";
 }

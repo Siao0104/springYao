@@ -38,4 +38,10 @@ public class RabbitmqRegister {
     public Binding yao01CFanoutExchange(){
         return BindingBuilder.bind(yao01C()).to(yao01Exchange());
     }
+
+    //Direct範例
+    @Bean
+    public Queue Queue() {
+        return new Queue("DirectMq");
+    }
 }

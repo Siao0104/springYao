@@ -15,22 +15,22 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
 @Entity
 @Table(name="user_basic")
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
 @Component
+@Data
 public class UserBasicEntity implements Serializable {
 
     /** 主鍵 */
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     /** 版本 */
     @Column(name = "version")
-    @org.springframework.data.annotation.Version
+    @Version
     private Integer version;
 
     /** 姓名 */
@@ -89,7 +89,7 @@ public class UserBasicEntity implements Serializable {
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
 
-    @org.springframework.data.annotation.Transient
+    @Transient
     private transient String rowStatus = "R";
 
     /** 使用者權限 */

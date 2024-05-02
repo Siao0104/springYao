@@ -22,5 +22,6 @@ public class MqController {
         mqSendService.sendA();
         mqSendService.sendB();
         mqSendService.sendC();
+        mqSendService.sendDirect();
     }
 }
