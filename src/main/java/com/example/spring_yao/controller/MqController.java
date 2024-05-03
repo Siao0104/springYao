@@ -18,7 +18,7 @@ public class MqController {
     private MqSendService mqSendService;
 
     @GetMapping
-    public void test(){
+    public void testMq(){
         mqSendService.sendA();
         mqSendService.sendB();
         mqSendService.sendC();

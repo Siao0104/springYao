@@ -5,7 +5,7 @@ import com.example.spring_yao.model.userbasic.UserBasicListVO;
 import com.example.spring_yao.repository.UserBasicRepository;
 import com.example.spring_yao.service.MqSendService;
 import com.example.spring_yao.utils.JsonUtils;
-import com.example.spring_yao.utils.RabbitMq.RabbitmqConstant;
+import com.example.spring_yao.utils.rabbitMq.RabbitmqConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

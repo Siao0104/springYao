@@ -1,4 +1,4 @@
-package com.example.spring_yao.utils.RabbitMq;
+package com.example.spring_yao.utils.rabbitMq;
 
 public interface RabbitmqConstant {
 

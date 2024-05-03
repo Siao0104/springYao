@@ -2,7 +2,7 @@ package com.example.spring_yao.service.impl;
 
 import com.example.spring_yao.entity.UserBasicEntity;
 import com.example.spring_yao.model.userbasic.UserBasicListVO;
-import com.example.spring_yao.utils.RabbitMq.RabbitmqConstant;
+import com.example.spring_yao.utils.rabbitMq.RabbitmqConstant;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

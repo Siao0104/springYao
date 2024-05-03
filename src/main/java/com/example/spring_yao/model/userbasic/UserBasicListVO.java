@@ -22,9 +22,6 @@ public class UserBasicListVO implements Serializable {
     /** 帳號 */
     private String account;
 
-    /** 密碼 */
-    private String password;
-
     /** 生日 */
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
