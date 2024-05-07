@@ -1,11 +1,11 @@
 package com.example.spring_yao.utils.rabbitMq;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class RabbitmqRegister {
@@ -41,7 +41,30 @@ public class RabbitmqRegister {
 
     //Direct範例
     @Bean
-    public Queue Queue() {
-        return new Queue("DirectMq");
+    public Queue directMq() {
+        //綁訂死信交換機和路由
+        Map<String,Object> args = new HashMap<>();
+        //x-dead-letter-exchange: 當前業務綁定的死信交換機
+        //消息被拒絕、消息過期、或者隊列達到最大長度，消息會變成死信
+        args.put("x-dead-letter-exchange",RabbitmqConstant.DEAD_EXCHANGE);
+        //x-dead-letter-routing-key: 當前業務的死信路由
+        args.put("x-dead-letter-routing-key",RabbitmqConstant.DEAD_ROUTING);
+        return new Queue("DirectMq", true, false, false, args);
+    }
+
+    //死信隊列
+    @Bean
+    public Queue deadQueue(){
+        return QueueBuilder.durable(RabbitmqConstant.DEAD_ROUTING).build();
+    }
+
+    @Bean
+    public DirectExchange deadExchange(){
+        return new DirectExchange(RabbitmqConstant.DEAD_EXCHANGE);
+    }
+
+    @Bean
+    public Binding deadQueueForDeadExchange(){
+        return BindingBuilder.bind(deadQueue()).to(deadExchange()).with(RabbitmqConstant.DEAD_ROUTING);
     }
 }

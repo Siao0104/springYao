@@ -9,4 +9,8 @@ public interface RabbitmqConstant {
     String YAO_01_B = "yao_01_b";
 
     String YAO_01_C = "yao_01_c";
+
+    String DEAD_EXCHANGE = "dead_exchange";
+
+    String DEAD_ROUTING = "dead_routing";
 }

@@ -32,7 +32,8 @@ public class MqReceiverServiceImpl {
 
     @RabbitListener(queues = "DirectMq")
     @RabbitHandler
-    public void receiverDirect(String direct){
-        System.out.println(STR."Direct : \{direct}");
+    public void receiverDirect(String direct) throws Exception{
+        throw new Exception("模擬接收失敗");
+//        System.out.println(STR."DirectMq 測試: \{direct}");
     }
 }
