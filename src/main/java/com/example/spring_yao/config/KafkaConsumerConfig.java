@@ -24,7 +24,6 @@ public class KafkaConsumerConfig {
     public static final String DEFAULT_SERVER = "localhost:9092";
     public static final String TEST_TOPIC = "test";
     public static final String USER_TOPIC = "user";
-
     public static final String USERS_TOPIC = "users";
     public static final String GROUP_1 = "group_1";
     public static final String GROUP_2 = "group_2";
