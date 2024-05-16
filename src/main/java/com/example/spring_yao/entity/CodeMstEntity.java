@@ -66,7 +66,4 @@ public class CodeMstEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
-
-    @Transient
-    private transient String rowStatus = "R";
 }

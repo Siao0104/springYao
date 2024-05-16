@@ -89,9 +89,6 @@ public class UserBasicEntity implements Serializable {
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
 
-    @Transient
-    private transient String rowStatus = "R";
-
     /** 使用者權限 */
     @Enumerated(EnumType.STRING)
     @Column(name = "authority")
