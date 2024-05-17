@@ -30,11 +30,11 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = KafkaConsumerConfig.USERS_TOPIC, groupId = KafkaConsumerConfig.GROUP_3,containerFactory = "usersKafkaListenerFactory")
     public void consumeJson(List<UserBasicListVO> userBasicListVOS){
-        System.out.println(STR."UserListVOS : \{userBasicListVOS}");
+        System.out.println(String.format("UserListVOS : {}",userBasicListVOS));
     }
 
     @DltHandler
     public <T> void dltHandler(T object){
-        System.out.println(STR."死信隊列處理結果 : \{object}");
+        System.out.println(String.format("死信隊列處理結果 : {}",object));
     }
 }

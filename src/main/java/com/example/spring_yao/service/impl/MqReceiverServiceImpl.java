@@ -15,25 +15,25 @@ public class MqReceiverServiceImpl {
     @RabbitListener(queues = RabbitmqConstant.YAO_01_A)
     @RabbitHandler
     public void receiverA(String a){
-        System.out.println(STR."A : \{a}");
+        System.out.println(String.format("A : {}",a));
     }
 
     @RabbitListener(queues = RabbitmqConstant.YAO_01_B)
     @RabbitHandler
     public void receiverB(UserBasicEntity userBasicEntitiy){
-        System.out.println(STR."userBasicEntitiy : \{userBasicEntitiy}");
+        System.out.println(String.format("userBasicEntitiy : {}",userBasicEntitiy));
     }
 
     @RabbitListener(queues = RabbitmqConstant.YAO_01_C)
     @RabbitHandler
     public void receiverC(List<UserBasicListVO> userBasicListVOS){
-        System.out.println(STR."userBasicListVOS : \{userBasicListVOS}");
+        System.out.println(String.format("userBasicListVOS : {}",userBasicListVOS));
     }
 
     @RabbitListener(queues = "DirectMq")
     @RabbitHandler
     public void receiverDirect(String direct) throws Exception{
         throw new Exception("模擬接收失敗");
-//        System.out.println(STR."DirectMq 測試: \{direct}");
+//        System.out.println(String.format("DirectMq 測試: {}",direct));
     }
 }

@@ -33,7 +33,7 @@ public class GlobalRestException {
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.toList());
         String json = JsonUtils.objectToJson(result);
-        log.warn(STR."\{e.getMessage()}，ConstraintViolationException : 字段驗證異常");
+        log.warn(String.format("{}，ConstraintViolationException : 字段驗證異常",e.getMessage()));
         return new ResponseEntity<>(json, HttpStatus.BAD_REQUEST);
     }
 
@@ -46,7 +46,7 @@ public class GlobalRestException {
                 .stream()
                 .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
         String json = JsonUtils.objectToJson(messageMap);
-        log.warn(STR."\{e.getMessage()}，BindException : 字段驗證異常");
+        log.warn(String.format("{}，BindException : 字段驗證異常",e.getMessage()));
         return new ResponseEntity<>(json, HttpStatus.BAD_REQUEST);
     }
 
@@ -64,7 +64,7 @@ public class GlobalRestException {
                 errorMsg.append("\n").append(((ObjectError) allErrors.get(i)).getDefaultMessage());
             }
         }
-        log.warn(STR."\{e.getMessage()}，MethodArgumentNotValidException : 字段驗證異常");
+        log.warn(String.format("{}，MethodArgumentNotValidException : 字段驗證異常",e.getMessage()));
         return new ResponseEntity<>(errorMsg, HttpStatus.BAD_REQUEST);
     }
 }

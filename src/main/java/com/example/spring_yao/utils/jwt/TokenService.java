@@ -44,7 +44,7 @@ public class TokenService {
 
             jwtParser = Jwts.parserBuilder().setSigningKey(secretKey).build();
         }catch (Exception e){
-            log.error(STR."密鑰產生錯誤 : \{e.getMessage()}");
+            log.error(String.format("密鑰產生錯誤 : {}",e.getMessage()));
         }
     }
 

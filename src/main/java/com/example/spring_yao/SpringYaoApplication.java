@@ -15,7 +15,7 @@ public class SpringYaoApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(SpringYaoApplication.class, args);
 		String port = context.getEnvironment().getProperty("server.port");
-		System.out.println(STR."Swagger UI : http://localhost:\{port}/swagger-ui/index.html");
+		System.out.println(String.format("Swagger UI : http://localhost:{}/swagger-ui/index.html",port));
 	}
 
 }
