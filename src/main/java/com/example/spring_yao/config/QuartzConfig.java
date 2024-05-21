@@ -18,7 +18,7 @@ public class QuartzConfig {
 
     @Bean
     public Trigger JobTrigger(){
-        ScheduleBuilder<CronTrigger> scheduleBuilder = CronScheduleBuilder.cronSchedule("0 * * * * ?");
+        ScheduleBuilder<CronTrigger> scheduleBuilder = CronScheduleBuilder.cronSchedule("0 0 12 * * ?");
         //綁定對應工作明細
         return TriggerBuilder.newTrigger().forJob(jobDetail()).withSchedule(scheduleBuilder).build();
     }
