@@ -13,6 +13,6 @@ public class ScheduleDaily {
 
     @Scheduled(cron = "0 0 0/1 * * ?")
     private void timingJob(){
-        System.out.println(String.format("現在時間 : {}",sdfHms.format(new Date())));
+        System.out.println(String.format("現在時間 : %s",sdfHms.format(new Date())));
     }
 }

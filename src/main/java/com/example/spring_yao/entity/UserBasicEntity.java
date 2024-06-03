@@ -1,6 +1,7 @@
 package com.example.spring_yao.entity;
 
 import com.example.spring_yao.utils.jwt.userauthority.UserAuthority;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -9,7 +10,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -46,7 +46,7 @@ public class UserBasicEntity implements Serializable {
     private String password;
 
     /** 生日 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @Column(name = "birthday")
     private Date birthday;
 
@@ -63,7 +63,7 @@ public class UserBasicEntity implements Serializable {
     private boolean enabled;
 
     /** 到期日 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @Column(name = "expiry_date")
     private Date expiryDate;
 
@@ -76,7 +76,7 @@ public class UserBasicEntity implements Serializable {
     private String createdBy;
 
     @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "created_date")
     private Date createdDate;
 
@@ -85,7 +85,7 @@ public class UserBasicEntity implements Serializable {
     private String lastModifyBy;
 
     @LastModifiedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
 

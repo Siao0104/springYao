@@ -1,10 +1,10 @@
 package com.example.spring_yao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -37,12 +37,12 @@ public class TimeTaskEntity {
     private String remark;
 
     /** 上次執行時間 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "last_execute_time")
     private Date lastExecuteTime;
 
     /** 下次執行時間 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "next_execute_time")
     private Date nextExecuteTime;
 }

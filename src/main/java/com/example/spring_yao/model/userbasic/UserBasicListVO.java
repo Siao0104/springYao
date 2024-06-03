@@ -23,7 +23,7 @@ public class UserBasicListVO implements Serializable {
     private String account;
 
     /** 生日 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date birthday;
 
     /** 國籍 */
@@ -36,7 +36,7 @@ public class UserBasicListVO implements Serializable {
     private boolean enabled;
 
     /** 到期日 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date expiryDate;
 
     /** 使用者權限 */

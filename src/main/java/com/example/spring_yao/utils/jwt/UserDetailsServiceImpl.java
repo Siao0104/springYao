@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserBasicDetails loadUserByUsername(String account) throws UsernameNotFoundException {
         UserBasicEntity userBasicEntity = userBasicRepository.getByAccount(account);
         if (userBasicEntity == null) {
-            throw new UsernameNotFoundException(String.format("查無此帳號: {}",account));
+            throw new UsernameNotFoundException(String.format("查無此帳號: %s",account));
         }
 
         return new UserBasicDetails(userBasicEntity);

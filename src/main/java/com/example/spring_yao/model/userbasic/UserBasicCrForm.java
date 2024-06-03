@@ -35,7 +35,7 @@ public class UserBasicCrForm {
 
     /** 生日 */
     @NotNull(message = "生日不能為空")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date birthday;
 
     /** 國籍 */
@@ -49,7 +49,7 @@ public class UserBasicCrForm {
     private boolean enabled;
 
     /** 到期日 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date expiryDate;
 
     /** 使用者權限 */

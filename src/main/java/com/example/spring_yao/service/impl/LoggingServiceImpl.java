@@ -53,7 +53,7 @@ public class LoggingServiceImpl implements LoggingService {
             userBasicRepository.save(userBasicEntity);
             return new ResponseEntity<>("註冊會員成功", HttpStatus.OK);
         }catch (Exception e){
-            log.error(String.format("錯誤 : {}",e.getMessage()));
+            log.error(String.format("錯誤 : %s",e.getMessage()));
             return new ResponseEntity<>("註冊會員失敗", HttpStatus.BAD_REQUEST);
         }
     }

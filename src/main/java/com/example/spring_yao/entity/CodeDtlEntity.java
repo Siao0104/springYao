@@ -1,6 +1,7 @@
 package com.example.spring_yao.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -9,7 +10,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -53,7 +53,7 @@ public class CodeDtlEntity {
     private String createdBy;
 
     @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "created_date")
     private Date createdDate;
 
@@ -62,7 +62,7 @@ public class CodeDtlEntity {
     private String lastModifyBy;
 
     @LastModifiedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
 }

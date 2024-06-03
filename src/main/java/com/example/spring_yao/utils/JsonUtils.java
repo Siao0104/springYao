@@ -47,7 +47,7 @@ public class JsonUtils {
             }
             return voInstance;
         }catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e){
-            log.error(String.format("錯誤 : {}",e.getMessage()));
+            log.error(String.format("錯誤 : %s",e.getMessage()));
             return null;
         }
     }
@@ -59,7 +59,7 @@ public class JsonUtils {
         try{
             return objectMapper.writeValueAsString(object);
         }catch (JsonProcessingException e){
-            log.error(String.format("錯誤 : {}",e.getMessage()));
+            log.error(String.format("錯誤 : %s",e.getMessage()));
             return null;
         }
     }

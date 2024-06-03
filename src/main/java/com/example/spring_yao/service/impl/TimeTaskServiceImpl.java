@@ -28,7 +28,7 @@ public class TimeTaskServiceImpl implements TimeTaskService {
             List<TimeTaskEntity> timeTaskEntities = timeTaskRepository.findAllByTaskName(timeTaskEntity.getTaskName());
             return timeTaskEntities.size();
         }catch (Exception e){
-            log.error(String.format("錯誤 : {}",e.getMessage()));
+            log.error(String.format("錯誤 : %s",e.getMessage()));
             throw new Exception();
         }
     }

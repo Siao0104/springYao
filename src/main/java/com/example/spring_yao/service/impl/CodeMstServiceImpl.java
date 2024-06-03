@@ -39,7 +39,7 @@ public class CodeMstServiceImpl implements CodeMstService {
             codeMstEntity.setCodeDtlEntities(codeDtlEntities);
             codeMstRepository.save(codeMstEntity);
         }catch (Exception e){
-            log.error(String.format("錯誤 : {}",e.getMessage()));
+            log.error(String.format("錯誤 : %s",e.getMessage()));
             throw new Exception();
         }
     }

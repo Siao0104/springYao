@@ -33,7 +33,7 @@ public class UserBasicUpForm {
     private String password;
 
     /** 生日 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date birthday;
 
     /** 國籍 */
@@ -46,7 +46,7 @@ public class UserBasicUpForm {
     private boolean enabled;
 
     /** 到期日 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date expiryDate;
 
     /** 使用者權限 */
