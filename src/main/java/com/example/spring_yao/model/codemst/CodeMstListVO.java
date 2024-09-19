@@ -21,4 +21,6 @@ public class CodeMstListVO implements Serializable {
 
     /** 生效否 */
     private String enabled;
+
+    private String rowStatus = "R";
 }

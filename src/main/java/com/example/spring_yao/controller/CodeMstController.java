@@ -2,6 +2,8 @@ package com.example.spring_yao.controller;
 
 import com.example.spring_yao.entity.CodeMstEntity;
 import com.example.spring_yao.model.codemst.CodeMstListVO;
+import com.example.spring_yao.model.codemst.CodeMstPagination;
+import com.example.spring_yao.model.codemst.CodeMstUpForm;
 import com.example.spring_yao.repository.CodeMstRepository;
 import com.example.spring_yao.service.CodeMstService;
 import com.example.spring_yao.utils.JsonUtils;
@@ -9,14 +11,17 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("springYao/codeMst")
@@ -38,9 +43,51 @@ public class CodeMstController {
         return new ResponseEntity<>(codeMstListVOS, HttpStatus.OK);
     }
 
-    @Operation(summary = "測試dropDown新增")
-    @PutMapping("/uiPutNewCodeMst")
-    public void uiPutNewCodeMst() throws Exception {
-        codeMstService.brPutNewCodeMst();
+    @Operation(summary = "取得含有pageable的codeMst")
+    @PostMapping("/uiGetAllCodeMstPageable")
+    public ResponseEntity<Map<String, Object>> uiGetAllCodeMstPageable(@RequestBody CodeMstPagination codeMstPagination) {
+        Pageable pageable = PageRequest.of(codeMstPagination.getPage()-1, codeMstPagination.getSize());
+
+        Specification<CodeMstEntity> specification = (root, query, criteriaBuilder) -> {
+            String searchValue = codeMstPagination.getDataType();
+            // code like '%searchValue%' or enabled like '%searchValue%'
+            return criteriaBuilder.or(
+                    criteriaBuilder.like(root.get("code"), "%" + searchValue + "%"),
+                    criteriaBuilder.like(root.get("enabled"), "%" + searchValue + "%")
+            );
+        };
+
+        Page<CodeMstEntity> pageResult = codeMstRepository.findAll(specification,pageable);
+        List<CodeMstListVO> codeMstListVOS = JsonUtils.listTolist(pageResult.getContent(), CodeMstListVO.class);
+        Map<String, Object> response = new HashMap<>();
+        response.put("data", codeMstListVOS);
+        response.put("totalItems", pageResult.getTotalElements());
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @Operation(summary = "新增/修改代碼主檔")
+    @PostMapping("/uiSaveCodeMst")
+    public ResponseEntity<String> uiAddCodeMst(@RequestBody List<CodeMstUpForm> codeMstUpForms){
+        try{
+            List<CodeMstEntity> codeMstEntities = JsonUtils.listTolist(codeMstUpForms, CodeMstEntity.class);
+            codeMstRepository.saveAll(codeMstEntities);
+            return new ResponseEntity<>("保存成功", HttpStatus.OK);
+        }catch (Exception e){
+            log.error(String.format("錯誤 : %s",e.getMessage()));
+            return new ResponseEntity<>("保存失敗", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Operation(summary = "刪除代碼主檔")
+    @DeleteMapping("/uiDeleteCodeMst/{id}")
+    public ResponseEntity<String> uiDeleteCodeMst(@PathVariable("id") int id) {
+        try{
+            codeMstRepository.deleteById(id);
+            return new ResponseEntity<>("刪除成功", HttpStatus.OK);
+        }catch (Exception e){
+            log.error(String.format("錯誤 : %s",e.getMessage()));
+            return new ResponseEntity<>("刪除失敗", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

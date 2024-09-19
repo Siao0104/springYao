@@ -66,4 +66,7 @@ public class CodeMstEntity {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @Column(name = "last_modify_date")
     private Date lastModifyDate;
+
+    @Transient
+    private String rowStatus;
 }
