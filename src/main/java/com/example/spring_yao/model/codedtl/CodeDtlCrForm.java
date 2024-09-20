@@ -22,4 +22,7 @@ public class CodeDtlCrForm {
 
     /** 生效否 */
     private String enabled;
+
+    /** 外鍵 */
+    private int codeMstId;
 }

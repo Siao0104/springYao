@@ -21,4 +21,7 @@ public class CodeDtlListVO implements Serializable{
 
     /** 生效否 */
     private String enabled;
+
+    /** 外鍵 */
+    private int codeMstId;
 }

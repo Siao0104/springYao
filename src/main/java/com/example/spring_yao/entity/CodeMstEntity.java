@@ -46,7 +46,7 @@ public class CodeMstEntity {
 
     @JsonManagedReference
     @ToString.Exclude
-    @OneToMany(mappedBy = "codeMstEntity",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "codeMstEntity",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<CodeDtlEntity> codeDtlEntities;
 
     @CreatedBy

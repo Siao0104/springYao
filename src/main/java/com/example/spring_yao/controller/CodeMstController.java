@@ -72,22 +72,32 @@ public class CodeMstController {
         try{
             List<CodeMstEntity> codeMstEntities = JsonUtils.listTolist(codeMstUpForms, CodeMstEntity.class);
             codeMstRepository.saveAll(codeMstEntities);
-            return new ResponseEntity<>("保存成功", HttpStatus.OK);
+            return new ResponseEntity<>("代碼主檔保存成功", HttpStatus.OK);
         }catch (Exception e){
             log.error(String.format("錯誤 : %s",e.getMessage()));
-            return new ResponseEntity<>("保存失敗", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("代碼主檔保存失敗", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Operation(summary = "刪除代碼主檔")
     @DeleteMapping("/uiDeleteCodeMst/{id}")
-    public ResponseEntity<String> uiDeleteCodeMst(@PathVariable("id") int id) {
+    public ResponseEntity<String> uiDeleteCodeMst(@PathVariable("id") int id) throws Exception {
         try{
             codeMstRepository.deleteById(id);
-            return new ResponseEntity<>("刪除成功", HttpStatus.OK);
+            return new ResponseEntity<>("代碼主檔刪除成功", HttpStatus.OK);
         }catch (Exception e){
             log.error(String.format("錯誤 : %s",e.getMessage()));
-            return new ResponseEntity<>("刪除失敗", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("代碼主檔刪除失敗", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Operation(summary = "刪除代碼明細")
+    @DeleteMapping("/uiDeleteCodeDtl/{id}/{codeMstId}")
+    public ResponseEntity<String> uiDeleteCodeDtl(@PathVariable("id") int id,@PathVariable("codeMstId") int codeMstId) throws Exception {
+        if(codeMstService.brDeleteCodeDtl(id,codeMstId)){
+            return new ResponseEntity<>("代碼明細刪除成功", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("代碼明細刪除失敗", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

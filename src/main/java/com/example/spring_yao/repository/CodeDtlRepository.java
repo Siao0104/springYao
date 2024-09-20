@@ -2,12 +2,13 @@ package com.example.spring_yao.repository;
 
 import com.example.spring_yao.entity.CodeDtlEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface CodeDtlRepository extends JpaRepository<CodeDtlEntity,Integer> {
+public interface CodeDtlRepository extends JpaRepository<CodeDtlEntity,Integer>, JpaSpecificationExecutor<CodeDtlEntity> {
 
     @Query(value = "select dtl.* " +
             "from code_mst mst,code_dtl dtl " +
