@@ -3,7 +3,6 @@ package com.example.spring_yao.controller;
 import com.example.spring_yao.entity.CodeMstEntity;
 import com.example.spring_yao.model.codemst.CodeMstListVO;
 import com.example.spring_yao.model.codemst.CodeMstPagination;
-import com.example.spring_yao.model.codemst.CodeMstUpForm;
 import com.example.spring_yao.repository.CodeMstRepository;
 import com.example.spring_yao.service.CodeMstService;
 import com.example.spring_yao.utils.JsonUtils;
@@ -68,9 +67,8 @@ public class CodeMstController {
 
     @Operation(summary = "新增/修改代碼主檔")
     @PostMapping("/uiSaveCodeMst")
-    public ResponseEntity<String> uiAddCodeMst(@RequestBody List<CodeMstUpForm> codeMstUpForms){
+    public ResponseEntity<String> uiAddCodeMst(@RequestBody List<CodeMstEntity> codeMstEntities){
         try{
-            List<CodeMstEntity> codeMstEntities = JsonUtils.listTolist(codeMstUpForms, CodeMstEntity.class);
             codeMstRepository.saveAll(codeMstEntities);
             return new ResponseEntity<>("代碼主檔保存成功", HttpStatus.OK);
         }catch (Exception e){
