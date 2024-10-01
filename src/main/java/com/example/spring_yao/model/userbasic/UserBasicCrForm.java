@@ -45,6 +45,11 @@ public class UserBasicCrForm {
     /** 性別 */
     private String sex;
 
+    /** email */
+    @NotBlank(message = "email不能為空")
+    @Length(message = "email不能超過{max}個字",max = 50)
+    private String email;
+
     /** 使用者生效否 */
     private boolean enabled;
 

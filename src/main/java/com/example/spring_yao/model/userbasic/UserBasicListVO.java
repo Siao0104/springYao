@@ -32,6 +32,9 @@ public class UserBasicListVO implements Serializable {
     /** 性別 */
     private String sex;
 
+    /** email */
+    private String email;
+
     /** 使用者生效否 */
     private boolean enabled;
 

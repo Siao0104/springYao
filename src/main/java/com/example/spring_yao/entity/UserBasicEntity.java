@@ -58,6 +58,10 @@ public class UserBasicEntity implements Serializable {
     @Column(name = "sex")
     private String sex;
 
+    /** email */
+    @Column(name = "email")
+    private String email;
+
     /** 使用者生效否 */
     @Column(name = "enabled")
     private boolean enabled;
