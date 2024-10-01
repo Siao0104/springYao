@@ -58,7 +58,7 @@ public class UserBasicController {
 
     @Operation(summary = "換發refreshToken")
     @PostMapping("/uiGetRefreshToken")
-    public ResponseEntity<Map<String,String>> uiUserLogging(@RequestBody Map<String,String> request){
+    public ResponseEntity<Map<String,String>> uiGetRefreshToken(@RequestBody Map<String,String> request){
         String refreshToken = request.get("refreshToken");
         Map<String,Object> accessToken = tokenService.refreshAccessToken(refreshToken);
         Map<String,String> res = Map.of("accessToken",accessToken.get("accessToken").toString());

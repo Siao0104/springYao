@@ -35,9 +35,6 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(registry ->
                         registry
-                                .requestMatchers("/springYao/userBasic/uiRegisterUser","/springYao/userBasic/uiUserLogging").permitAll()
-                                .requestMatchers("/springYao/codeMst/**").permitAll()
-                                .requestMatchers("/springYao/codeDtl/**").permitAll()
                                 .requestMatchers("/swagger-ui/index.html/**").permitAll()
                                 .anyRequest().permitAll()
                 )
