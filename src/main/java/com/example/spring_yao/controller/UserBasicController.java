@@ -35,10 +35,18 @@ public class UserBasicController {
     @Autowired
     private TokenService tokenService;
 
-    @Operation(summary = "取得全部註冊會員資料")
-    @GetMapping("/uiGetAllUser/{account}")
-    public ResponseEntity<List<UserBasicListVO>> uiGetAllUser(@PathVariable("account") String account) {
+    @Operation(summary = "取得全部註冊會員資料(帳號)")
+    @GetMapping("/uiGetAllUserByAccount/{account}")
+    public ResponseEntity<List<UserBasicListVO>> uiGetAllUserByAccount(@PathVariable("account") String account) {
         List<UserBasicEntity> userBasicEntities = userBasicRepository.getAllByAccount(account);
+        List<UserBasicListVO> userBasicListVOS = JsonUtils.listTolist(userBasicEntities,UserBasicListVO.class);
+        return ResponseEntity.ok(userBasicListVOS);
+    }
+
+    @Operation(summary = "取得全部註冊會員資料(郵箱)")
+    @GetMapping("/uiGetAllUserByEmail/{email}")
+    public ResponseEntity<List<UserBasicListVO>> uiGetAllUserByEmail(@PathVariable("email") String email) {
+        List<UserBasicEntity> userBasicEntities = userBasicRepository.getAllByEmail(email);
         List<UserBasicListVO> userBasicListVOS = JsonUtils.listTolist(userBasicEntities,UserBasicListVO.class);
         return ResponseEntity.ok(userBasicListVOS);
     }

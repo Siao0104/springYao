@@ -83,6 +83,34 @@ public class TokenService {
         return res;
     }
 
+    public LoginResponse createTokenForOauth(String email) {
+
+        UserBasicEntity oauthUserBasic = userBasicRepository.getByEmail(email);
+
+        //產生accessToken
+        Map<String,Object> accessToken = createAccessToken(oauthUserBasic.getAccount());
+
+        //產生refreshToken
+        Map<String,Object> refreshToken = createRefreshToken(oauthUserBasic.getAccount());
+
+        //找出帳號資料，準備存入token
+        UserBasicEntity userBasicEntity = userBasicRepository.getByAccount(oauthUserBasic.getAccount());
+
+        LoginResponse res = new LoginResponse();
+        res.setAccessToken(accessToken.get("accessToken").toString());
+        res.setAccessTokenDeadLine((Date) accessToken.get("accessTokenDeadLine"));
+        res.setRefreshToken(refreshToken.get("refreshToken").toString());
+        res.setRefreshTokenDeadLine((Date) refreshToken.get("refreshTokenDeadLine"));
+        res.setUserName(userBasicEntity.getAccount());
+        res.setAccount(userBasicEntity.getUserName());
+        res.setUserAuthority(userBasicEntity.getAuthority());
+        res.setExpiryDate(userBasicEntity.getExpiryDate());
+        userBasicEntity.setToken(res.getAccessToken());
+        userBasicRepository.save(userBasicEntity);
+
+        return res;
+    }
+
     private Map<String,Object> createAccessToken(String account) {
         // 有效時間（毫秒）
         long expirationMillis = Instant.now()

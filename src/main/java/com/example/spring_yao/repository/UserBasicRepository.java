@@ -8,5 +8,9 @@ import java.util.List;
 public interface UserBasicRepository extends JpaRepository<UserBasicEntity,Integer> {
     UserBasicEntity getByAccount(String account);
 
+    UserBasicEntity getByEmail(String email);
+
     List<UserBasicEntity> getAllByAccount(String account);
+
+    List<UserBasicEntity> getAllByEmail(String email);
 }
