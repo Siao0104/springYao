@@ -18,7 +18,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    public static final String DEFAULT_SERVER = "localhost:9092";
+    public static final String DEFAULT_SERVER = "192.168.0.10:9092";
     public static final String TEST_TOPIC = "test";
     public static final String USER_TOPIC = "user";
     public static final String USERS_TOPIC = "users";
