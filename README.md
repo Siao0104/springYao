@@ -247,7 +247,7 @@ logging:
 
 ## 5. config
 
-### 1. 允許前端跨域使用後端
+- 允許前端跨域使用後端
 
 ```java
 package com.example.spring_yao.config;
@@ -279,7 +279,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 ```
 
-### 2. Swagger OpenAPI
+- Swagger OpenAPI
 
 ```java
 package com.example.spring_yao.config;
@@ -315,7 +315,7 @@ public class SwaggerConfig {
 }
 ```
 
-### 3. SpringSecurity
+- SpringSecurity
 
 ```java
 package com.example.spring_yao.config;
@@ -375,7 +375,7 @@ public class SecurityConfig {
 }
 ```
 
-### 4. RedisConfig
+- RedisConfig
 
 ```java
 //使用.opsForValue則用StringRedisTemplate即可
