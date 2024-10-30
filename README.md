@@ -1,19 +1,19 @@
 # springBoot專案建置
 
-## 1. 專案生成方式
+## 專案生成方式
 
 - IDEA創建
 - Spring initializr
 - STS創建
 
-## 2. 環境/系統配置
+## 環境/系統配置
 
 - pom.xml
   - 相關依賴配置(swagger、各系統模組...等)
 - resources/application.properties
   - 各項環境配置
 
-## 3. properties配置
+## properties配置
 
 - application
 
@@ -100,7 +100,7 @@ logging:
 
 
 
-## 4. pom
+## pom
 
 ```xml
 		<dependency>
@@ -245,7 +245,7 @@ logging:
 		</dependency>
 ```
 
-## 5. config
+## config
 
 - 允許前端跨域使用後端
 
